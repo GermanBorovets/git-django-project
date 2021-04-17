@@ -69,12 +69,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'd48kl9escape6o',
         'HOST': 'ec2-54-161-239-198.compute-1.amazonaws.com',
         'PORT': 5432,
