@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
-from .utils import MyMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -49,7 +48,7 @@ class HomeNews(ListView):
     template_name = 'news/home_news_list.html'
     context_object_name = 'news'
 
-    # extra_context = {'title': 'Главная'}
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -80,15 +79,12 @@ class NewsByCategory(ListView):
 
 class ViewNews(DetailView):
     model = News
-    # pk_url_kwarg = 'news_id'
-    # template_name = 'news/news_detail.html'
     context_object_name = 'news_item'
 
 
 class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/add_news.html'
-    # success_url = reverse_lazy('home')
     login_url = '/admin/'
 
 # def index(request):
